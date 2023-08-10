@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CustomerRepositoryTest {
+class PaymentRepositoryTest {
 
     @Autowired
-    private CustomerRepository repository;
+    private PaymentRepository paymentRepository;
+
+    @Autowired
+    private CustomerRepository customerRepository;
 
     @BeforeEach
     void setUp() {
@@ -18,12 +21,14 @@ class CustomerRepositoryTest {
 
     @Test
     void getAll() {
-        repository.findAll().forEach(System.out::println);
+        //paymentRepository.findAll().forEach(System.out::println);
     }
 
     @Test
     void getCustomerPayments() {
-        //repository.findById(103).get();
+        paymentRepository.findByCustomerNumber(
+                customerRepository.findById(103).get()
+        ).forEach(System.out::println);
     }
 
     @AfterEach
