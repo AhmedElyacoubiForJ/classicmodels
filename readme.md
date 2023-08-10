@@ -8,3 +8,13 @@
 # Payments: stores payments made by customers based on their accounts.
 # Employees: stores all employee information as well as the organization structure such as who reports to whom.
 # Offices: stores sales office data.
+
+## TODO
+# List all payments greater than twice the average payment;
+# What is the total of payments received?
+# Report total payments for October 28, 2004.
+# Report those payments greater than $100,000.
+# What is the minimum payment received?
+# Report the total payments by date
+# Report those payments greater than $100,000.
+# Sort the report so the customer who made the highest payment appears first.
