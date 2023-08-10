@@ -10,16 +10,31 @@ import java.time.LocalDate;
 @Data
 public class Payment {
     @Id
-    @Column(name = "checkNumber", nullable = false, updatable = false, length = 50)
+    @Column(
+            name = "checkNumber",
+            nullable = false,
+            updatable = false,
+            length = 50
+    )
     private String checkNumber;
 
-    @Column(name = "paymentDate", nullable = false)
+    @Column(
+            name = "paymentDate",
+            nullable = false
+    )
     private LocalDate paymentDate;
 
-    @Column(nullable = false, precision = 12, scale = 2)
+    @Column(
+            nullable = false,
+            precision = 12,
+            scale = 2
+    )
     private BigDecimal amount;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "customerNumber", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(
+            name = "customerNumber",
+            nullable = false
+    )
     private Customer customerNumber;
 }

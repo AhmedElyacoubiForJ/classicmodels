@@ -5,10 +5,8 @@ import edu.yacoubi.classicmodels.entity.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Set;
 
 public interface PaymentRepository extends JpaRepository<Payment, String> {
-
-    List<Payment> findByCustomerNumber(Customer customerNumber);
-
-
+    Set<Payment> findByCustomerNumber(Customer customerNumber);
 }

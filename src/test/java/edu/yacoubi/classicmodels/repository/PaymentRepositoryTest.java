@@ -1,5 +1,6 @@
 package edu.yacoubi.classicmodels.repository;
 
+import edu.yacoubi.classicmodels.entity.Customer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,9 +27,11 @@ class PaymentRepositoryTest {
 
     @Test
     void getCustomerPayments() {
-        paymentRepository.findByCustomerNumber(
-                customerRepository.findById(103).get()
-        ).forEach(System.out::println);
+        Customer customer = customerRepository.findById(103).get();
+
+        paymentRepository
+                .findByCustomerNumber(customer)
+                .forEach(System.out::println);
     }
 
     @AfterEach
