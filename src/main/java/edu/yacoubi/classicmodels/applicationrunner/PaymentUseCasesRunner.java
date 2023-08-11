@@ -10,6 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @Component
@@ -37,6 +38,16 @@ public class PaymentUseCasesRunner implements CommandLineRunner {
         System.out.println(txtQuery);
         BigDecimal totalPayments = repository.totalPaymentsReceived();
         System.out.println(totalPayments);
+        System.out.println();
+
+        txtQuery = "3. Report total payments for October 28, 2004?";
+        System.out.println(txtQuery);
+        BigDecimal totalPaymentsFor =
+                repository.totalPaymentsFor(
+                        LocalDate.of(2004, 10, 28)
+                );
+        System.out.println(totalPaymentsFor);
+        System.out.println();
 
 
 
