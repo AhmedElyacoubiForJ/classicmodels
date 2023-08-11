@@ -24,4 +24,9 @@ public interface PaymentRepository extends JpaRepository<Payment, String> {
     // SELECT SUM(p.amount) FROM payments p WHERE p.paymentDate = "2004-10-28
     @Query(value = "SELECT SUM(p.amount) FROM payments p WHERE p.paymentDate = :paymentDate", nativeQuery = true)
     BigDecimal totalPaymentsFor(@Param(value = "paymentDate") LocalDate paymentDate);
+
+    // 4. Report those payments greater than $100,000?
+    // SELECT * FROM payments p WHERE p.amount > 100000
+    @Query(value = "SELECT * FROM payments p WHERE p.amount > :amount", nativeQuery = true)
+    List<Payment> greaterThan(@Param(value = "amount") BigDecimal amount);
 }

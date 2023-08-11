@@ -49,6 +49,11 @@ public class PaymentUseCasesRunner implements CommandLineRunner {
         System.out.println(totalPaymentsFor);
         System.out.println();
 
+        txtQuery = "4. Report those payments greater than $100,000?";
+        System.out.println(txtQuery);
+        List<Payment> paymentGreaterThan =
+                repository.greaterThan(BigDecimal.valueOf(100_000));
+        paymentGreaterThan.forEach(System.out::println);
 
 
     }
