@@ -16,5 +16,4 @@
 # Report those payments greater than $100,000.
 # What is the minimum payment received?
 # Report the total payments by date
-# Report those payments greater than $100,000.
 # Sort the report so the customer who made the highest payment appears first.
