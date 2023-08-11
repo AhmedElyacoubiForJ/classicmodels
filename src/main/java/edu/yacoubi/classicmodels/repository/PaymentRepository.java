@@ -15,4 +15,6 @@ public interface PaymentRepository extends JpaRepository<Payment, String> {
     // 2. What is the total of payments received?
     @Query(value = "SELECT SUM(p.amount) FROM payments p", nativeQuery = true)
     BigDecimal totalPaymentsReceived();
+
+    // 3. Report total payments for October 28, 2004?
 }
