@@ -31,10 +31,10 @@ public class Payment {
     )
     private BigDecimal amount;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
             name = "customerNumber",
             nullable = false
     )
-    private Customer customerNumber;
+    private Customer customer;
 }
