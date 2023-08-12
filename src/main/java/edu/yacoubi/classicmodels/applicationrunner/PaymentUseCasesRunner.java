@@ -43,7 +43,11 @@ public class PaymentUseCasesRunner implements CommandLineRunner {
         txtQuery = "5. What is the minimum payment received?";
         callMinPaymentReceived(txtQuery);
 
+        txtQuery = "6. Report the total payments by date";
+        repository.totalPaymentsPerDate().forEach(System.out::println);
 
+        txtQuery = "7. Sort the report so the customer who made the highest payment appears first.";
+        
     }
 
     private void callMinPaymentReceived(String txtQuery) {
