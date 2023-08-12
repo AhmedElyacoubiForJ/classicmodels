@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -29,4 +30,12 @@ public interface PaymentRepository extends JpaRepository<Payment, String> {
     // SELECT * FROM payments p WHERE p.amount > 100000
     @Query(value = "SELECT * FROM payments p WHERE p.amount > :amount", nativeQuery = true)
     List<Payment> greaterThan(@Param(value = "amount") BigDecimal amount);
+
+    // 5. What is the minimum payment received?
+    @Query(value = "SELECT MIN(p.amount) FROM payments p", nativeQuery = true)
+    BigDecimal minPaymentReceived();
+
+    // 6. Report the total payments by date
+    // SELECT p.paymentDate, SUM(p.amount) FROM payments p GROUP BY p.paymentDate;
+
 }

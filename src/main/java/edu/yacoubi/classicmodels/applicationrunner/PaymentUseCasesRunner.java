@@ -29,18 +29,38 @@ public class PaymentUseCasesRunner implements CommandLineRunner {
         System.out.println("********* Query results *********");
 
         txtQuery = "1. List all payments greater than twice the average payment?";
-        System.out.println(txtQuery);
-        List<Payment> payments = repository.greaterThanTwiceAverage();
-        payments.forEach(System.out::println);
-        System.out.println();
+        callGreaterThanTwiceAverage(txtQuery);
 
         txtQuery = "2. What is the total of payments received?";
-        System.out.println(txtQuery);
-        BigDecimal totalPayments = repository.totalPaymentsReceived();
-        System.out.println(totalPayments);
-        System.out.println();
+        callTotalPaymentsReceived(txtQuery);
 
         txtQuery = "3. Report total payments for October 28, 2004?";
+        callTotalPaymentsFor(txtQuery);
+
+        txtQuery = "4. Report those payments greater than $100,000?";
+        callGreaterThan(txtQuery);
+
+        txtQuery = "5. What is the minimum payment received?";
+        callMinPaymentReceived(txtQuery);
+
+
+    }
+
+    private void callMinPaymentReceived(String txtQuery) {
+        System.out.println(txtQuery);
+        System.out.println(repository.minPaymentReceived());
+        System.out.println();
+    }
+
+    private void callGreaterThan(String txtQuery) {
+        System.out.println(txtQuery);
+        List<Payment> paymentGreaterThan =
+                repository.greaterThan(BigDecimal.valueOf(100_000));
+        paymentGreaterThan.forEach(System.out::println);
+        System.out.println();
+    }
+
+    private void callTotalPaymentsFor(String txtQuery) {
         System.out.println(txtQuery);
         BigDecimal totalPaymentsFor =
                 repository.totalPaymentsFor(
@@ -48,13 +68,19 @@ public class PaymentUseCasesRunner implements CommandLineRunner {
                 );
         System.out.println(totalPaymentsFor);
         System.out.println();
+    }
 
-        txtQuery = "4. Report those payments greater than $100,000?";
+    private void callGreaterThanTwiceAverage(String txtQuery) {
         System.out.println(txtQuery);
-        List<Payment> paymentGreaterThan =
-                repository.greaterThan(BigDecimal.valueOf(100_000));
-        paymentGreaterThan.forEach(System.out::println);
+        List<Payment> payments = repository.greaterThanTwiceAverage();
+        payments.forEach(System.out::println);
+        System.out.println();
+    }
 
-
+    private void callTotalPaymentsReceived(String txtQuery) {
+        System.out.println(txtQuery);
+        BigDecimal totalPayments = repository.totalPaymentsReceived();
+        System.out.println(totalPayments);
+        System.out.println();
     }
 }
